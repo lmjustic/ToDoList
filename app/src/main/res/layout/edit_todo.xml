@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:id="@+id/editSaveButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="onEditSave"
+        android:layout_toRightOf="@+id/editNamePrompt"
+        android:layout_toEndOf="@+id/editNamePrompt" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:id="@+id/deleteButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="onDelete"
+        android:layout_toLeftOf="@+id/editNamePrompt"
+        android:layout_toStartOf="@+id/editNamePrompt" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter ToDo Name"
+        android:id="@+id/editNamePrompt"
+        android:layout_below="@+id/deleteButton"
+        android:layout_centerHorizontal="true"
+        android:textSize="24dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editNameInput"
+        android:layout_below="@+id/editNamePrompt"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:hint="Name Here"
+        android:textSize="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Date and Time"
+        android:id="@+id/editDateTimePrompt"
+        android:layout_below="@+id/editNameInput"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:textSize="24dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/editDateInput"
+        android:layout_below="@+id/editDateTimePrompt"
+        android:layout_centerHorizontal="true"
+        android:hint="mm/dd/yyyy" />
+
+    <TimePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTimePicker"
+        android:layout_below="@+id/editDateInput"
+        android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@android:id/list"
+        android:layout_below="@+id/editTimePicker"
+        android:layout_alignLeft="@+id/editNamePrompt"
+        android:layout_alignStart="@+id/editNamePrompt"
+        android:layout_toLeftOf="@+id/editNamePrompt"
+        android:layout_toStartOf="@+id/editNamePrompt" />
+
+</RelativeLayout>
