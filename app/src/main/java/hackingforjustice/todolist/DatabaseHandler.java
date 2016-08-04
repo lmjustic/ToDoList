@@ -26,13 +26,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        //this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TODOS_TABLE = "CREATE TABLE " + TABLE_TODO + "("
-                + KEY_ID + " TEXT," + KEY_NAME + " INTEGER PRIMARY KEY,"
+                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
                 + KEY_DATE + " TEXT," + KEY_TIME + " TEXT" + ")";
         db.execSQL(CREATE_TODOS_TABLE);
     }
@@ -47,12 +46,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void addToDoItem(ToDoItem todo) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        ContentValues values = new ContentValues(3);
+        ContentValues values = new ContentValues();
+        values.put(KEY_ID, todo.getId());
         values.put(KEY_NAME, todo.getName());
         values.put(KEY_DATE, todo.getDate());
         values.put(KEY_TIME, todo.getTimeDB());
 
         db.insert(TABLE_TODO, null, values);
+
         db.close();
     }
 
@@ -105,6 +106,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        values.put(KEY_ID, todo.getId());
         values.put(KEY_NAME, todo.getName());
         values.put(KEY_DATE, todo.getDate());
         values.put(KEY_TIME, todo.getTimeDB());

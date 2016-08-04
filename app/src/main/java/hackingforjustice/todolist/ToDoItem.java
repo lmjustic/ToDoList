@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class ToDoItem {
     private Context context;
-    private int id = 0;
+    private int id;
     private int month;
     private int day;
     private int year;
@@ -31,7 +31,7 @@ public class ToDoItem {
         am = true;
         time = "";
         name = "";
-        setNewId();
+        id = 0;
     }
 
     public ToDoItem(Context c, String name) {
@@ -95,6 +95,7 @@ public class ToDoItem {
         this.name = name;
         setMonthDayYear();
         setTime();
+        setNewId();
     }
 
     public ToDoItem(Context c, String name, int month, int day, int year, int hour, int minute, boolean am) {
@@ -162,13 +163,15 @@ public class ToDoItem {
             hour = 12;
             minute = 0;
             am = true;
-        }
-        else {
+        } else {
             String[] colon = time.split(":");
             hour = Integer.parseInt(colon[0]);
             String[] space = colon[1].split(" ");
             minute = Integer.parseInt(space[0]);
-            am = space[1].equals("AM");
+            am = hour < 12;
+            if (space.length >= 2) {
+                am = space[1].equals("AM");
+            }
         }
     }
 
@@ -231,7 +234,7 @@ public class ToDoItem {
 
     public String getTimeDB() {
         String dbTime;
-        if (hour > 12) {
+        if (!am) {
             dbTime = (hour + 12) + ":";
         }
         else {

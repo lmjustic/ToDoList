@@ -41,10 +41,7 @@ public class MainActivity extends ListActivity {
 
         db = new DatabaseHandler(this);
 
-        db.addToDoItem(new ToDoItem(this, "abc", "1/2/3", "2:12 AM"));
         todos = (ArrayList<ToDoItem>) db.getAllToDoItems(this);
-
-        todos.add(new ToDoItem(this, "test", "1/2/2019", "3:15 PM"));
 
         setContentView(R.layout.activity_main);
 
@@ -69,7 +66,7 @@ public class MainActivity extends ListActivity {
             int hour;
             int minute;
             int currentApiVersion = android.os.Build.VERSION.SDK_INT;
-            if (currentApiVersion > android.os.Build.VERSION_CODES.LOLLIPOP_MR1){
+            if (currentApiVersion > android.os.Build.VERSION_CODES.LOLLIPOP_MR1) {
                 hour = newTime.getHour();
                 minute = newTime.getMinute();
             } else {
